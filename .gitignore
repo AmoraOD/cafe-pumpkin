@@ -1,3 +1,4 @@
 # PASTAS CONFIGURAÇÕES #
 .vscode/
 node_modules/
+dist/
