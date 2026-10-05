@@ -4,7 +4,7 @@ export function startMenu(): void{
     const nav_menu    = document.getElementById('container-menu');
 
     if (!header_menu || !toggle_menu || !nav_menu){
-        console.warn('Elementos menu não encontrados');
+        console.log('Elementos menu não encontrados');
         return;
     }
 
