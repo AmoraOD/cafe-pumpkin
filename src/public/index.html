@@ -9,23 +9,35 @@
     </head>
 
     <body>
-        <header id="principal-menu">
-            <button id="menu-mobile-toggle" class="menu-toggle" style="display: none;">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <header id="principal-menu" class="sticky-top">
+            <nav id="container-menu" class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
 
-            <nav id="container-menu" class="navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-center">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home-page">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#cardapio-page">Cardápio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#aboutus-page">Sobre nós</a>
-                    </li>
-                </ul>
+                    <button class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#nav-links"
+                            aria-controls="nav-links"
+                            aria-expanded="false"
+                            aria-label="Alternar navegação">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="nav-links">
+                        <ul class="navbar-nav mx-auto text-center">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#home-page">Início</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#cardapio-page">Cardápio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#aboutus-page">Sobre nós</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
             </nav>
         </header>
 
@@ -45,14 +57,12 @@
         </main>
     </body>
 
-    <footer class="d-flex flex-wrap bg-dark">
-        <div>
-            <ul>
-                <li></li>
-            </ul>
+    <footer class="mt-auto bg-dark">
+        <div class="container-fluid px-4 py-4">
+            <p class="text-light text-center">Projeto de portifolio</p>
         </div>
     </footer>
 
-    <script type="module" src="/dist/main.js"></script>
-    <script type="module" src="/src/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script type="module" src="/dist/main.js"></script> -->
+    <script src="/src/assets/bootstrap/js/bootstrap.min.js"></script>
 </html>
