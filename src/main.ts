@@ -1,3 +1,5 @@
-import { startMenu } from "./menu.js";
+import { Router } from "./router.js";
 
-startMenu();
+const router = new Router("#main-page-container");
+
+router.Start();
