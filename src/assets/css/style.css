@@ -9,3 +9,6 @@
 }
 
 #icon-pumpking-menu{ width: 2rem; height: auto; }
+
+/* IMAGENS CAROUSEL */
+#carousel .carousel-item img{ object-fit: cover; }

@@ -70,6 +70,7 @@ export class Carousel {
 
         this.root?.querySelectorAll("[data-carousel-generated]").forEach(el => el.remove());
 
+        this.root = null;
         this.items = [];
         this.currentIndex = 0;
     }
