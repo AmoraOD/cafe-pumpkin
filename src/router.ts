@@ -26,8 +26,11 @@ export class Router{
 
     public Start(): void {
         window.addEventListener("hashchange", () => this.handleRoute());
-        document.addEventListener("DOMContentLoaded", () => this.handleRoute());
-        this.handleRoute();
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", () => this.handleRoute());
+        } else {
+            this.handleRoute();
+        }
     }
     
     private getCurrentPath(): string {
@@ -47,6 +50,8 @@ export class Router{
             if (!res.ok) throw new Error (`HTTP ${res.status}`);
 
             this.outlet.innerHTML = await res.text();
+
+            window.dispatchEvent(new CustomEvent("route:rendered", { detail: { path: route.path } }));
 
             window.scrollTo({top: 0, behavior: "smooth"});
             document.title = `${route.title} | Cafeteria Pumpking`;

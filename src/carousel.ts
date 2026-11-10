@@ -63,7 +63,7 @@ export class Carousel {
         }
     }
 
-    private destroy(): void {
+    public destroy(): void {
         this.stopAutoPlay();
         this.abort?.abort();
         this.abort = null;
@@ -148,13 +148,20 @@ export class Carousel {
             if (this.items.length > 1 && this.options.interval > 0) this.startAutoPlay();
         }, { signal });
 
-        let startX = 0;
+        let startX: number | null = null;
+
         this.root.addEventListener("touchstart", (e) => {
-            startX = e.touches[0]?.clientX;
+            const touch = e.touches[0];
+            startX = touch ? touch.clientX: null;
         }, { signal, passive:true });
 
         this.root.addEventListener("touchend", (e) => {
-            const diff = e.changedTouches[0].clientX - startX;
+            if (startX === null) return;
+            const touch = e.changedTouches[0];
+            if (!touch) { startX = null; return; }
+
+            const diff = touch.clientX - startX;
+            startX = null;
             if (Math.abs(diff) < 40) return;
             diff > 0 ? this.prev() : this.next();
         }, { signal, passive:true });
