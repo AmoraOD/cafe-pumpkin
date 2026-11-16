@@ -1,4 +1,21 @@
-/*CORES PADRÃO SITE*/
+/* ======================== ANIMAÇÕES  ======================== */
+@keyframes jump-in{
+    0%   { translate: 0 45;}
+    45%  { translate: 0 -35; }
+    100% { translate: 0 0; }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    #carousel .carousel-item {
+        transition: opacity 200ms ease;
+    }
+    #carousel .carousel-item.active img {
+        animation: none;
+    }
+}
+
+/* ======================== CORES PADRÃO SITE ======================== */
 .cores{
     color: #110B11;
     color: #E93C0C;
@@ -10,5 +27,54 @@
 
 #icon-pumpking-menu{ width: 2rem; height: auto; }
 
+/* ======================== CAROUSEL ======================== */
+
+#carousel .carousel-inner{
+    position: relative;
+    height: clamp(320px, 45vw, 500px);
+    overflow: visible;
+}
+
+#carousel .carousel-item{
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    float: none;
+    margin: 0;
+    width: 100%;
+
+    opacity: 0;
+    scale: 0.6;
+    pointer-events: none;
+
+    transition:
+        opacity 400ms ease-in-out,
+        scale 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#carousel .carousel-item.active {
+    opacity: 1;
+    scale: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* Centraliza a imagem verticalmente dentro do slide */
+#carousel .carousel-item > .d-flex {
+    height: 100%;
+    align-items: center;
+}
+
 /* IMAGENS CAROUSEL */
-#carousel .carousel-item img{ object-fit: cover; }
+#carousel .carousel-item img{ 
+    object-fit: contain;
+    max-height: 100%;
+    max-width: 65%;
+
+    height: auto;
+    will-change: translate;
+}
+
+#carousel .carousel-item.active img {
+    animation: jump-in 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
